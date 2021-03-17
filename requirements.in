@@ -1,0 +1,12 @@
+pip-tools
+
+jupyterlab
+pandas
+seaborn
+
+torch
+torchvision
+
+ipywidgets  # Needed for tqdm
+tqdm
+attach

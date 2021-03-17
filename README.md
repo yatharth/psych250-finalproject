@@ -20,7 +20,7 @@ We consulted official PyTorch documentation heavily, in particular the examples 
 
 ## Goal of testing
 
-We wanted to test a potential signature of development in a DNN. Specifically, we were interested in the Face Inversion Effect, which emerges in a human's brain within the first year of life. We examined whether there was an analogue in the learning trajectory of the DNN. Such an analogue would appear as a gap in performance between classifying upright headshots versus inverted headshots. We were especially interested in when such a gap emerged, and how it evolved as the network approached maturity or convergence.
+We wanted to test a potential signature of development in a DNN. Specifically, we were interested in the Face Inversion Effect, which emerges in a human's brain within the first year of life. We wanted to see whether there was an analogue to be found in the learning trajectory of the DNN. Such an analogue would appear as a gap in performance between classifying upright headshots versus inverted headshots. We were especially interested in when such a gap emerged, and how it evolved as the network approached maturity or convergence.
 
 Humans mainly see upright faces in our daily lives; our training protocol was meant to approximate this experience by training the network on primarily upright images.
 

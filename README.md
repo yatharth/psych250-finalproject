@@ -1,7 +1,7 @@
 # Face Inversion Effect in CNNs
 
 _Final project for PSYCH 250_  
-_Yatharth Agarwal and Julia Jorgenson_
+_Yatharth Agarwal and Julia Jorgensen_
 
 
 ## Brief description of network

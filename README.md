@@ -1,11 +1,62 @@
-# PSYCH 250 final project
+# Face Inversion Effect in CNNs
 
-## Installation
+_Final project for PSYCH 250_  
+_Yatharth Agarwal and Julia Jorgenson_
 
-Navigate to the project directory and run:
+
+## Brief description of network
+
+We fine-tuned a SqueezeNet model on the CelebA dataset to classify the identity of the celebrity in a given head shot. SqueezeNet is a CNN-based architecture introduced in 2012 that achieves AlexNet-level accuracy on ImageNet with 50x fewer parameters [1]. CelebA is a dataset collected by the The Chinese University of Hong Kong of celebrity headshots, annotated with their identity, bounding boxes for facial parts, and various characteristics [2].
+
+We chose SqueezeNet due to the compact parameter size. To avoid training from scratch, we used pre-trained weights from training on ImageNet and fine-tuned them using the SGD optimiser. We chose CelebA because it was a freely-available database of clear and aligned face images.
+
+The network was trained on primarily upright headshots of celebrities, and its performance was evaluated on unseen headshots of the same celebrities, in upright form and in inverted form. 
+
+
+## What code was off-the-shelf and what code we developed
+
+We consulted official PyTorch documentation heavily, in particular the examples on fine-tuning Torchvision models [3]. Any other code was written by us.
+
+
+## Goal of testing
+
+Per the class requirement, we wanted to test a potential signature in the development of a DNN. Specifically, we wanted to look at the Face Inversion Effect (FIE) that occurs in human brains, and examine whether there was an analogue to be found in the learning trajectory of the DNN. Such an analogue would found as a gap in performance in classifying upright headshots versus inverted headshots. We were especially interested in when such a gap emerged, and how it evolved as the network approached maturity or convergence.
+
+Humans mainly see upright faces in our daily lives; our training protocol was meant to approximate by training the network on primarily upright images.
+
+## What was the outcome you measured (performance)
+
+The network approached maturity in 30 epochs, with accuracy on upright shots stabilising to around 50%, compared to the random chance baseline of 5%. Note that this accuracy is measured on validation data not used in training.
+
+Interestingly, the accuracy on inverted shots initially tracked the accuracy for upright shots until around epoch 5, and then it plateaued around 30%. In other words, the gap in performance on inverted faces emerged rather early in the development of the network, and moreover, further improvements in classifying upright shots did not translate into further improvements on classifying inverted shots. This can be seen in the figure below.
+
+![](src/plots/5_sgd_20class_acc.png)
+
+
+## How to run the code
+
+The project is implemented in a Jupyter notebook using PyTorch and tested on Python 3.8.
+
+To install the requirements, navigate to the project directory and run:
 
 ```
 pip install pip-tools
 pip-compile
 pip-sync
 ```
+
+Creating a virtual environment is recommended. Having installed the requirements, you can run `jupyter lab` to open up a browser tab and launch the `main.ipynb` notebook in the `src/` folder. The first run may take longer than usual to download the CelebA dataset to your computer.
+
+
+## Work done by each team member
+
+The work was done through pair coding, research, and collaborative writing. For fine-tuning the SqueezeNet model and evaluating its performance, Yatharth contributed more of his prior experience in machine learning, whereas for researching the neuroscientific background on the Face Inversion Effect to determine the goal and performance measures, Julia contributed her prior background in neuroscience. 
+
+<!-- Yatharth had the stronger machine learning background and Julia had a strong neuroscience background, so Yatharth took the lead on coding and Julia took the lead on research and presentation. Yatharth fine-tuned the SqueezeNet model and evaluated its performance, Julia researched the neuroscience background of the face inversion effect to guide what the goal and performance measures should be. She also created the presentation. Both Yatharth and Julia were involved in deciding the goals of the project and determining the training sets, testing sets, and performance measures to use. -->
+
+
+## Works Cited
+
+1. [SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size](https://arxiv.org/abs/1602.07360)
+2. [Large-scale CelebFaces Attributes (CelebA) Dataset](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
+3. [Finetuning Torchvision Models](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html)

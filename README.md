@@ -32,7 +32,7 @@ Interestingly, the accuracy on inverted shots initially tracked the accuracy for
 
 ![](src/plots/5_sgd_20class_acc.png)
 
-We tried variations, like changing the optimizer and number of classes, and found similar results. In particular, when we trained the network on 100 classes (five times as much data for training and evaluating performance than before), we found a similar pattern, where convergence was approached in 30 epochs, accuracy stabilishin to 50% compared to the random chance baseline of 1%, and the accuracy on inverted shots initally tracking the accuracy on upright shots till about epoch 5, then plateauing at 10%, and not improving with further improvements to the accuracy on upright images.
+We tried variations, like changing the optimizer and number of classes, and found similar results. In particular, when we trained the network on 100 classes (five times as much data for training and evaluating performance than before), we found a similar pattern: Convergence was approached in 30 epochs, with accuracy on upright shots stabilising to 50% compared to the random chance baseline of 1%. Accuracy on inverted shots initally tracked the accuracy of upright shots till about epoch 5, then plateaued at 10%, with further improvements to accuracy on upright shots not improving accuracy on inverted shots. See the figure below.
 
 ![](src/plots/8_sgd_100class_acc.png)
 

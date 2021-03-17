@@ -20,19 +20,19 @@ We consulted official PyTorch documentation heavily, in particular the examples 
 
 ## Goal of testing
 
-Per the class requirement, we wanted to test a potential signature in the development of a DNN. Specifically, we wanted to look at the Face Inversion Effect (FIE) that occurs in human brains, and examine whether there was an analogue to be found in the learning trajectory of the DNN. Such an analogue would found as a gap in performance in classifying upright headshots versus inverted headshots. We were especially interested in when such a gap emerged, and how it evolved as the network approached maturity or convergence.
+We wanted to test a potential signature of development in a DNN. Specifically, we were interested in the Face Inversion Effect, which emerges in a human's brain within the first year of life. We examined whether there was an analogue in the learning trajectory of the DNN. Such an analogue would appear as a gap in performance between classifying upright headshots versus inverted headshots. We were especially interested in when such a gap emerged, and how it evolved as the network approached maturity or convergence.
 
-Humans mainly see upright faces in our daily lives; our training protocol was meant to approximate by training the network on primarily upright images.
+Humans mainly see upright faces in our daily lives; our training protocol was meant to approximate this experience by training the network on primarily upright images.
 
 ## What was the outcome you measured (performance)
 
 We first trained the network on 20 classes. The network approached convergence in 30 epochs, with accuracy on upright shots stabilising to around 50% compared to the random chance baseline of 5%. This accuracy is measured on validation data not used in training.
 
-Interestingly, the accuracy on inverted shots initially tracked the accuracy for upright shots until around epoch 5, and then it plateaued around 30%. In other words, the gap in performance on inverted faces emerged rather early in the development of the network, and moreover, further improvements in classifying upright shots did not translate into further improvements on classifying inverted shots. This can be seen in the figure below.
+Interestingly, the accuracy on inverted shots initially tracked the accuracy for upright shots until around epoch 5, and then it plateaued around 30%. In other words, the gap in performance on inverted faces emerged early in the development of the network, and further improvements in classifying upright shots did not translate into further improvements on classifying inverted shots. This can be seen in the figure below.
 
 ![](src/plots/5_sgd_20class_acc.png)
 
-We tried variations, like changing the optimizer and number of classes, and found similar results. In particular, when we trained the network on 100 classes (five times as much data for training and evaluating performance than before), we found a similar pattern: Convergence was approached in 30 epochs, with accuracy on upright shots stabilising to 50% compared to the random chance baseline of 1%. Accuracy on inverted shots initally tracked the accuracy of upright shots till about epoch 5, then plateaued at 10%, with further improvements to accuracy on upright shots not improving accuracy on inverted shots. See the figure below.
+We tried variations, like changing the optimizer and number of classes, and found similar results. In particular, when we trained the network on 100 classes (five times as much data for training and evaluating performance than before), we found a similar pattern: Convergence was approached in 30 epochs, with accuracy on upright shots stabilising to 50% compared to the random chance baseline of 1%. Accuracy on inverted shots initally tracked the accuracy of upright shots until about epoch 5, then plateaued at 10%. Again, further improvements to accuracy on upright shots did not improve accuracy on inverted shots. See the figure below.
 
 ![](src/plots/8_sgd_100class_acc.png)
 

@@ -26,11 +26,15 @@ Humans mainly see upright faces in our daily lives; our training protocol was me
 
 ## What was the outcome you measured (performance)
 
-The network approached maturity in 30 epochs, with accuracy on upright shots stabilising to around 50%, compared to the random chance baseline of 5%. Note that this accuracy is measured on validation data not used in training.
+We first trained the network on 20 classes. The network approached convergence in 30 epochs, with accuracy on upright shots stabilising to around 50% compared to the random chance baseline of 5%. This accuracy is measured on validation data not used in training.
 
 Interestingly, the accuracy on inverted shots initially tracked the accuracy for upright shots until around epoch 5, and then it plateaued around 30%. In other words, the gap in performance on inverted faces emerged rather early in the development of the network, and moreover, further improvements in classifying upright shots did not translate into further improvements on classifying inverted shots. This can be seen in the figure below.
 
 ![](src/plots/5_sgd_20class_acc.png)
+
+We tried variations, like changing the optimizer and number of classes, and found similar results. In particular, when we trained the network on 100 classes (five times as much data for training and evaluating performance than before), we found a similar pattern, where convergence was approached in 30 epochs, accuracy stabilishin to 50% compared to the random chance baseline of 1%, and the accuracy on inverted shots initally tracking the accuracy on upright shots till about epoch 5, then plateauing at 10%, and not improving with further improvements to the accuracy on upright images.
+
+![](src/plots/8_sgd_100class_acc.png)
 
 
 ## How to run the code
@@ -45,7 +49,14 @@ pip-compile
 pip-sync
 ```
 
-Creating a virtual environment is recommended. Having installed the requirements, you can run `jupyter lab` to open up a browser tab and launch the `main.ipynb` notebook in the `src/` folder. The first run may take longer than usual to download the CelebA dataset to your computer.
+Creating a virtual environment is recommended. Having installed the requirements, you can run `jupyter lab` to open up a browser tab and launch the notebooks in the `src/` folder. There are two notebooks:
+
+- `with_20_classes.ipynb`
+- `with_100_classes.pynb`
+
+They have the same code; the only difference is the latter uses 100 classes instead of 20 classes (and thus trains and evaluates performance on 5 times as much data).
+
+The first run of the notebooks may take longer than usual to download the CelebA dataset to your computer. The notebook with 100 classes takes a long time; a GPU is advised, and if there is one, the GPU will be used.
 
 
 ## Work done by each team member

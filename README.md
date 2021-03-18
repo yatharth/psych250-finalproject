@@ -10,7 +10,7 @@ We fine-tuned a SqueezeNet model on the CelebA dataset to classify the identity 
 
 We chose SqueezeNet due to the compact parameter size. To avoid training from scratch, we used pre-trained weights from training on ImageNet and fine-tuned them using the SGD optimiser. We chose CelebA because it was a freely-available database of clear and aligned face images.
 
-The network was trained on primarily upright headshots of celebrities, and its performance was evaluated on unseen headshots of the same celebrities, in upright form and in inverted form. 
+The network was trained on primarily (but not entirely) upright headshots of celebrities, and its performance was evaluated on unseen headshots of the same celebrities, in upright form and in inverted form. 
 
 
 ## What code was off-the-shelf and what code we developed
@@ -20,13 +20,13 @@ We consulted official PyTorch documentation heavily, in particular the examples 
 
 ## Goal of testing
 
-We wanted to test a potential signature of development in a DNN. Specifically, we were interested in the Face Inversion Effect, which emerges in a human's brain within the first year of life. We looked for an analogue in the learning trajectory of our DNN. Such an analogue would appear as a gap in performance between classifying upright headshots versus inverted headshots. We were especially interested in when such a gap emerged, and how it evolved as the network approached maturity or convergence.
+We wanted to test a potential signature of development in a DNN. Specifically, we decided to examine the Face Inversion Effect. Human infants begin to show the Face Inversion Effect behaviorally within their first years of life, and human brains increasingly show preferences to upright faces over inverted faces as we mature into adulthood. We wanted to know whether a DNN would show an analogous learning trajectory. Such an analogue would appear as a gap that emerges early between the network's performance in identifying upright headshots and the network's performance in identifying inverted headshots. We were especially interested in particularly when such a gap would emerge, and how it would evolve as the network approached maturity or convergence.
 
 Humans mainly see upright faces in our daily lives; our training protocol was meant to approximate this experience by training the network on primarily upright images.
 
 ## What was the outcome you measured (performance)
 
-We first trained the network on 20 classes. The network approached convergence in 30 epochs, with accuracy on upright shots stabilising to around 50% compared to the random chance baseline of 5%. This accuracy is measured on validation data not used in training.
+We first trained the network on 20 classes (20 different identities). The network approached convergence in 30 epochs, with accuracy on upright shots stabilising to around 50% compared to the random chance baseline of 5%. This accuracy is measured on validation data not used in training.
 
 Interestingly, the accuracy on inverted shots initially tracked the accuracy for upright shots until around epoch 5, and then it plateaued around 30%. In other words, the gap in performance on inverted faces emerged early in the development of the network, and further improvements in classifying upright shots did not translate into further improvements on classifying inverted shots. This can be seen in the figure below.
 

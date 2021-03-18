@@ -20,7 +20,7 @@ We consulted official PyTorch documentation heavily, in particular the examples 
 
 ## Goal of testing
 
-We wanted to test a potential signature of development in a DNN. Specifically, we decided to examine the Face Inversion Effect. Human infants begin to show the Face Inversion Effect behaviorally within their first years of life, and human brains increasingly show preferences to upright faces over inverted faces as we mature into adulthood. We wanted to know whether a DNN would show an analogous learning trajectory. Such an analogue would appear as a gap that emerges early between the network's performance in identifying upright headshots and the network's performance in identifying inverted headshots. We were especially interested in particularly when such a gap would emerge, and how it would evolve as the network approached maturity or convergence.
+We wanted to test a potential signature of development in a DNN. Specifically, we decided to examine the Face Inversion Effect. Human infants begin to show the Face Inversion Effect behaviorally within their first years of life [4], and human brains increasingly show preferences to upright faces over inverted faces as we mature into adulthood [5]. We wanted to know whether a DNN would show an analogous learning trajectory. Such an analogue would appear as a gap that emerges early between the network's performance in identifying upright headshots and the network's performance in identifying inverted headshots. We were especially interested in particularly when such a gap would emerge, and how it would evolve as the network approached maturity or convergence.
 
 Humans mainly see upright faces in our daily lives; our training protocol was meant to approximate this experience by training the network on primarily upright images.
 
@@ -71,3 +71,5 @@ The work was done through pair coding, research, and collaborative writing. For 
 1. [SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size](https://arxiv.org/abs/1602.07360)
 2. [Large-scale CelebFaces Attributes (CelebA) Dataset](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
 3. [Finetuning Torchvision Models](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html)
+4. [Developmental origins of the face inversion effect.](10.1016/bs.acdb.2014.11.008.)
+5. [Developmental differences in the neural bases of the face inversion effect show progressive tuning of face-selective regions to the upright orientation.](https://doi.org/10.1016/j.neuroimage.2006.07.045)
